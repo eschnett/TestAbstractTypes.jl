@@ -35,7 +35,7 @@ function testAbstractString(::Type{T}, ch::AbstractChannel{T}) where {T}
             # Exponentiation
             @test x^0 == unit
             @test x^1 == x
-            @test x^2 == x*x
+            @test x^2 == x * x
             n = rand(3:10)
             @test x^n == *((x for i in 1:n)...)
 
