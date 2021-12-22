@@ -32,6 +32,13 @@ function testAbstractString(::Type{T}, ch::AbstractChannel{T}) where {T}
             # Associativity
             @test (x * y) * z == x * (y * z)
 
+            # Exponentiation
+            @test x^0 == unit
+            @test x^1 == x
+            @test x^2 == x*x
+            n = rand(3:10)
+            @test x^n == *((x for i in 1:n)...)
+
             # Lengths
             @test length(x) isa Int
             @test length(x * y) == length(x) + length(y)
@@ -56,6 +63,10 @@ function testAbstractString(::Type{T}, ch::AbstractChannel{T}) where {T}
                 @test (x * y)[pos] == x[pos]
                 @test (y * x)[ncodeunits(y) + pos] == x[pos]
             end
+
+            # codeunit, codeunits
+            # firstindex, lastindex, thisind, nextind, prevind, isvalid
+            # cmp
         end
 
         close(ch)
