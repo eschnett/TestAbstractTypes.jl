@@ -8,27 +8,24 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        # arch: [x64, x86]
-        # os: [ubuntu-latest, windows-latest, macOS-latest]
-        # version: ["1.4", "1.5", "1.6", "1.7", "nightly"]
         include:
           - arch: "x64"
-            os: "ubuntu-latest"
+            os: "ubuntu-20.04"
             version: "1.7"
           - arch: "x64"
-            os: "windows-latest"
+            os: "windows-2022"
             version: "1.7"
           - arch: "x64"
-            os: "macOS-latest"
+            os: "macOS-11"
             version: "1.7"
           - arch: "x86"
-            os: "ubuntu-latest"
+            os: "ubuntu-20.04"
             version: "1.7"
           - arch: "x64"
-            os: "ubuntu-latest"
+            os: "ubuntu-20.04"
             version: "nightly"
           - arch: "x64"
-            os: "ubuntu-latest"
+            os: "ubuntu-20.04"
             version: "1.6"
     steps:
       - uses: actions/checkout@v2
